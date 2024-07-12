@@ -1,26 +1,15 @@
-# flutter_application
+# Flutter Application 
 
-A new Flutter project.
+## Installation
+
+- [Flutter](https://flutter.dev/docs/get-started/install)
+- [Xcode](https://developer.apple.com/xcode/)
+- [Android Studio](https://developer.android.com/studio)
+- [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+- Clone the repository
+- Open the project in Visual Studio Code
+- Run the project clicking on the `Run and Debug` button
 
-
-
-## Project Structure
-
-```
-lib
-│   main.dart
-│   README.md
-│
-└───src
-│   │
-│   └───config
-│   │   │   app_theme.dart
-│   │   └───routes.dart
-│   │
-│   │───models
-│   │   └─── user.dart
-```
