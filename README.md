@@ -11,5 +11,16 @@
 
 - Clone the repository
 - Open the project in Visual Studio Code
+
+## Run the project on iOS
+
+- Open the project in VSCode
+- Select a device to use for running the app
 - Run the project clicking on the `Run and Debug` button
 
+## Feature List
+
+- i18n support
+- GraphQL support
+- Dark mode support
+- Global Store with Provider
