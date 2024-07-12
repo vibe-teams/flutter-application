@@ -1,0 +1,7 @@
+{
+  "editor.tabSize": 2,
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "Dart-Code.dart-code"
+  }
+}
