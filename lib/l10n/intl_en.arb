@@ -3,5 +3,6 @@
   "home": "Home",
   "todoList": "Todo List",
   "profile": "Profile",
-  "changeLanguage": "Change Language"
+  "changeLanguage": "Change Language",
+  "createTodo": "Create Todo"
 }
