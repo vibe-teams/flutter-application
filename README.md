@@ -11,6 +11,7 @@
 
 - Clone the repository
 - Open the project in Visual Studio Code
+- Generate the i18n files running the command `flutter gen-l10n` in the terminal
 
 ## Run the project on iOS
 

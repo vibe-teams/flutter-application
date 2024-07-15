@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/src/providers/locale_provider.dart';
 import 'package:flutter_application/src/ui/screens/home_screen.dart';
 import 'package:flutter_application/src/ui/screens/profile_screen.dart';
 import 'package:flutter_application/src/ui/screens/todo_list_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,16 +16,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      home: const MyHomePage(title: 'Flutter Demo Home Page '),
-    );
+    return ChangeNotifierProvider(
+        create: (_) => LocaleProvider(),
+        child: Consumer<LocaleProvider>(builder: (context, provider, child) {
+          return MaterialApp(
+            title: 'Flutter Demo',
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              useMaterial3: true,
+            ),
+            locale: provider.locale,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            home: const MyHomePage(title: 'Flutter Demo Home Page '),
+          );
+        }));
   }
 }
 
@@ -61,15 +68,15 @@ class _MyHomePageState extends State<MyHomePage> {
         <BottomNavigationBarItem>[
       BottomNavigationBarItem(
         label: localizations?.home,
-        icon: Icon(Icons.home),
+        icon: const Icon(Icons.home),
       ),
       BottomNavigationBarItem(
         label: localizations?.todoList,
-        icon: Icon(Icons.list),
+        icon: const Icon(Icons.list),
       ),
       BottomNavigationBarItem(
         label: localizations?.profile,
-        icon: Icon(Icons.person),
+        icon: const Icon(Icons.person),
       ),
     ];
 

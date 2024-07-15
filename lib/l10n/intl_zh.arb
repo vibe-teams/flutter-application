@@ -2,5 +2,6 @@
   "@@locale": "zh",
   "home": "首页",
   "todoList": "待办事项",
-  "profile": "个人资料"
+  "profile": "个人资料",
+  "changeLanguage": "更改语言"
 }

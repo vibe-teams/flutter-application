@@ -2,5 +2,6 @@
   "@@locale": "en",
   "home": "Home",
   "todoList": "Todo List",
-  "profile": "Profile"
+  "profile": "Profile",
+  "changeLanguage": "Change Language"
 }
