@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/src/providers/locale_provider.dart';
+import 'package:flutter_application/src/providers/todo_provider.dart';
 import 'package:flutter_application/src/ui/screens/home_screen.dart';
 import 'package:flutter_application/src/ui/screens/profile_screen.dart';
 import 'package:flutter_application/src/ui/screens/todo_list/todo_list_screen.dart';
@@ -16,8 +17,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (_) => LocaleProvider(),
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => LocaleProvider()),
+          ChangeNotifierProvider(create: (_) => TodoProvider())
+        ],
         child: Consumer<LocaleProvider>(builder: (context, provider, child) {
           return MaterialApp(
             title: 'Flutter Demo',

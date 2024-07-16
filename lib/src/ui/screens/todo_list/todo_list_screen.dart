@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/src/models/todo.dart';
+import 'package:flutter_application/src/providers/todo_provider.dart';
+import 'package:flutter_application/src/ui/screens/todo_list/create_todo_screen.dart';
+import 'package:provider/provider.dart';
 
 class TodoListScreen extends StatefulWidget {
   const TodoListScreen({Key? key}) : super(key: key);
@@ -9,40 +11,26 @@ class TodoListScreen extends StatefulWidget {
 }
 
 class _TodoListScreenState extends State<TodoListScreen> {
-  final List<Todo> todoList = [
-    Todo(
-      title: 'Todo 1',
-      description: 'Description 1',
-    ),
-    Todo(
-      title: 'Todo 2',
-      description: 'Description 2',
-    ),
-    Todo(
-      title: 'Todo 3',
-      description: 'Description 3',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final todoProvider = Provider.of<TodoProvider>(context, listen: true);
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView.separated(
           separatorBuilder: (context, index) => const Divider(),
           padding: const EdgeInsets.all(8),
-          itemCount: todoList.length,
+          itemCount: todoProvider.todoList.length,
           itemBuilder: (context, index) {
-            final item = todoList[index];
+            final item = todoProvider.todoList[index];
             return Dismissible(
-                key: Key(index.toString()),
+                key: Key(item.id),
                 direction: DismissDirection.endToStart,
                 onDismissed: (direction) {
                   setState(() {
-                    todoList.removeAt(index);
+                    todoProvider.remove(item);
                   });
-
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('${item.title} dismissed')),
                   );
@@ -57,8 +45,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
                   ),
                 ),
                 child: ListTile(
-                  title: Text(todoList[index].title),
-                  subtitle: Text(todoList[index].description),
+                  title: Text(item.title),
+                  subtitle: Text(item.description),
                 ));
           },
           // itemBuilder: (context, index) =>
@@ -94,7 +82,10 @@ class _TodoListScreenState extends State<TodoListScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/create-todo');
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CreateTodoScreen()),
+          );
         },
         tooltip: 'Create Todo',
         child: const Icon(Icons.add),
