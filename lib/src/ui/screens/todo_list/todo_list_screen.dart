@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/src/providers/todo_provider.dart';
-import 'package:flutter_application/src/ui/screens/todo_list/create_todo_screen.dart';
 import 'package:provider/provider.dart';
 
 class TodoListScreen extends StatefulWidget {
@@ -51,41 +50,13 @@ class _TodoListScreenState extends State<TodoListScreen> {
           },
           // itemBuilder: (context, index) =>
         ),
-        // child: ListView(
-        //   children: [
-        //     ListTile(
-        //       title: Text('Todo 1'),
-        //       subtitle: Text('Description 1'),
-        //       trailing: IconButton(
-        //         icon: const Icon(Icons.delete),
-        //         onPressed: () {},
-        //       ),
-        //     ),
-        //     ListTile(
-        //       title: Text('Todo 2'),
-        //       subtitle: Text('Description 2'),
-        //       trailing: IconButton(
-        //         icon: const Icon(Icons.delete),
-        //         onPressed: () {},
-        //       ),
-        //     ),
-        //     ListTile(
-        //       title: Text('Todo 3'),
-        //       subtitle: Text('Description 3'),
-        //       trailing: IconButton(
-        //         icon: const Icon(Icons.delete),
-        //         onPressed: () {},
-        //       ),
-        //     ),
-        //   ],
-        // ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const CreateTodoScreen()),
-          );
+          Navigator.pushNamed(context, '/create-todo');
+          //     .catchError(() => print("Navigate to Create Todo Screen"));
+
+          print("Navigate to Create Todo Screen");
         },
         tooltip: 'Create Todo',
         child: const Icon(Icons.add),

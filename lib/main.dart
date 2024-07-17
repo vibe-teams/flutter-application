@@ -3,6 +3,7 @@ import 'package:flutter_application/src/providers/locale_provider.dart';
 import 'package:flutter_application/src/providers/todo_provider.dart';
 import 'package:flutter_application/src/ui/screens/home_screen.dart';
 import 'package:flutter_application/src/ui/screens/profile_screen.dart';
+import 'package:flutter_application/src/ui/screens/todo_list/create_todo_screen.dart';
 import 'package:flutter_application/src/ui/screens/todo_list/todo_list_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -30,9 +31,16 @@ class MyApp extends StatelessWidget {
               useMaterial3: true,
             ),
             locale: provider.locale,
+            initialRoute: '/',
+            routes: {
+              '/': (context) =>
+                  const MyHomePage(title: 'Flutter Demo Home Page '),
+              '/create-todo': (context) =>
+                  const CreateTodoScreen(key: Key("create-todo")),
+            },
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
-            home: const MyHomePage(title: 'Flutter Demo Home Page '),
+            // home: const MyHomePage(title: 'Flutter Demo Home Page '),
           );
         }));
   }
